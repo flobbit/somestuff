@@ -1,0 +1,94 @@
+:toc:
+
+== NP Calculation
+
+=== Single Loss
+
+==== Criteria for packaging
+----
+Bla bla bla +
+Neue Zeile
+
+Neuer Absatz und very important zeugs
+----
+
+.Table Criteria For Packaging
+|===
+|Field
+
+|LossId
+|ContractId
+|CoverId
+|OccurrencePeriodStart
+|OccurrencePeriodEnd
+|UnderwritingPeriodStart
+|UnderwritingPeriodEnd
+|===
+
+==== Criteria for Current State Selection
+The existing Gross Postings and the newly delivered Gross Postings have to be sorted to avoid unnecessary re-bookings
+and to ensure that the calculation is replicable.
+
+.Table Criteria for Current State Selection
+|===
+|Field
+
+|EntryCode
+|LossId
+|Cedent
+|ClassOfBusiness
+|TypeOfBusiness
+|UnderwritingArea
+|LineOfBusiness
+|AsOf
+|CurrencyTranslationDate
+|OccurrencePeriodStart
+|OccurrencePeriodEnd
+|UnderwritingDate
+|ContractId
+|RiskId
+|CoverId
+|Amount
+|Currency
+|===
+
+==== Criteria for Sorting within a functional package
+The existing Gross Postings and the newly delivered Gross Postings have to be sorted to avoid unnecessary re-bookings
+and to ensure that the calculation is replicable.
+
+.Table Criteria for Sorting within a functional package
+|===
+|Sort Order | Field
+
+|1|EntryCode (from Amounts Covered)
+|2|Cedent
+|3|ClassOfBusiness
+|4|TypeOfBusiness
+|5|UnderWritingArea
+|6|LineOfBusiness
+|7|AsOf
+|8|CurrencyTranslationDate
+|===
+
+
+----
+This is literal text
+----
+
+[plantuml,states,svg]
+----
+include::StateDiagram.plantuml[]
+----
+
+[source,java]
+----
+include::NonProportionalSingleLossLimiterKey.java[]
+----
+
+[source,java,indent=16]
+----
+	@Getter
+	@Column(name = "OCCURRENCEPERIODEND")
+	private LocalDate occurrencePeriodEnd;
+
+----
